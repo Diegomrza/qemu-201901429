@@ -1,42 +1,26 @@
 .global main
 
 main:
+	LDR R0, =filename
+	MOV R1, #0x42
+	MOV R2, #384
+	MOV R7, #5
+	SVC 0
 
-	do:
-		LDR R0, =pat
-		LDR R1, =num
-		BL scanf
+	LDR R1, =entrada
+	MOV R2, #11
+	MOV R7, #3
+	SVC 0
 
-		LDR R1, =num
-		LDR R1, [R1]
-		CMP R1, #0
-		BEQ enddo
-		MOV R2, #1
+	MOV R7, #6
+	SVC 0
 
-	while:
-		CMP R1, #1
-		BEQ endwhile
-		MUL R3, R2, R1
-		MOV R2, R3
-		SUB R1, R1, #1
-		B while
+	LDR R0, =entrada
+	BL printf
 
-	endwhile:
-		LDR R0, =txt
-		MOV R1, R2
-		BL printf
-
-		LDR R1, =num
-		LDR R1, [R1]
-		CMP R1, #0
-		BNE do
-
-	enddo:
-		MOV R7, #1
-		MOV R0, #0
-		SVC 0
+	MOV R7, #1
+	SVC 0
 
 .data
-pat: .asciz "%d"
-num: .word 0
-txt: .asciz "El factorial es => %d\n"
+filename: .asciz "archivo.txt"
+entrada: .skip 100
