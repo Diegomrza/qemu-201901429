@@ -11,7 +11,7 @@ main:
 		LDR R1, [R1]
 		CMP R1, #0
 		BEQ enddo
-		MOV R1, #1
+		MOV R2, #1
 
 	while:
 		CMP R1, #1
