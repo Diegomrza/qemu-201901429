@@ -8,7 +8,7 @@ main:
 	SVC 0
 
 	LDR R1, =entrada
-	MOV R2, #11
+	MOV R2, #500
 	MOV R7, #3
 	SVC 0
 
