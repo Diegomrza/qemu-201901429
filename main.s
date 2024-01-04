@@ -76,7 +76,7 @@ salir_programa:
 
 .section .data
 mensaje_error_open:      .asciz "Error al abrir el archivo.\n"
-longitud_error_open:     .equ . - mensaje_error_open
+longitud_error_open:     .equ 26
 
 mensaje_error_read:      .asciz "Error al leer el archivo.\n"
-longitud_error_read:     .equ . - mensaje_error_read
+longitud_error_read:     .equ 26
