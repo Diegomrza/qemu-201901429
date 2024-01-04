@@ -12,11 +12,15 @@ _start:
     mov r7, #5         // Número de la llamada al sistema para open
     svc 0              // Realizar la llamada al sistema
 
+    // Guardar el descriptor de archivo
+    mov r4, r0
+
     // Verificar si hubo errores al abrir el archivo
     cmp r0, #0
     blt error_open
 
     // Llamada al sistema para leer el archivo
+    mov r0, r4          // Usar el descriptor de archivo guardado
     mov r2, #1024       // Número de bytes a leer
     ldr r1, =buffer
     mov r7, #3          // Número de la llamada al sistema para read
