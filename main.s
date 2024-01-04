@@ -1,28 +1,41 @@
 .global main
 
-.section .data
-num: .word 0
-pat: .asciz "%d"
-
-.section .text
 main:
-    MOV R2, #1
 
-    LDR R0, =pat
-    LDR R1, =num
-    BL scanf
+	do:
+		LDR R0, =pat
+		LDR R1, =num
+		BL scanf
 
-    LDR R1, [R1]
-    CMP R1, #0
-    BEQ enddo
+		LDR R1, =num
+		LDR R1, [R1]
+		CMP R1, #0
+		BEQ enddo
+		MOV R1, #1
 
-do:
-    MUL R2, R2, R1
-    SUBS R1, R1, #1
-    CMP R1, #0
-    BNE do
+	while:
+		CMP R1, #1
+		BEQ endwhile
+		MUL R3, R2, R1
+		MOV R2, R3
+		B while
 
-enddo:
-    MOV R0, R2
-    BL printf
-    BX LR
+	endwhile:
+		LDR R0, =txt
+		MOV R1, R2
+		BL printf
+
+		LDR R1, =num
+		LDR R1, [R1]
+		CMP R1, #0
+		BNE do
+
+	enddo:
+		MOV R7, #1
+		MOV R0, #0
+		SVC 0
+
+.data
+pat: .asciz "%d"
+num: .word 0
+txt: .asciz "factorial = %d\n"
