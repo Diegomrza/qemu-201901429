@@ -23,4 +23,4 @@ main:
 
 .data
 filename: .asciz "archivo.txt"
-entrada: .skip 500
+entrada: .skip 100
