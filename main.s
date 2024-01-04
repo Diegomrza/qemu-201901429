@@ -18,6 +18,7 @@ main:
 		BEQ endwhile
 		MUL R3, R2, R1
 		MOV R2, R3
+		SUB R1, R1, #1
 		B while
 
 	endwhile:
