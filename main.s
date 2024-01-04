@@ -39,4 +39,4 @@ main:
 .data
 pat: .asciz "%d"
 num: .word 0
-txt: .asciz "factorial = %d\n"
+txt: .asciz "El factorial es => %d\n"
